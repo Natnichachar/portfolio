@@ -5,7 +5,7 @@ The project focuses on **SQL querying, database design, and frontend–backend i
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project demonstrates how SQL databases can be integrated into a real-world application scenario:
 
@@ -18,7 +18,7 @@ This project demonstrates how SQL databases can be integrated into a real-world 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Frontend:** Streamlit  
 - **Backend:** Python  
@@ -30,7 +30,7 @@ This project demonstrates how SQL databases can be integrated into a real-world 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 Pizzateria_SQLQueryDatabaseProject/
 │
 ├── firstPage.py # Login & signup page
@@ -45,7 +45,7 @@ Pizzateria_SQLQueryDatabaseProject/
 
 ---
 
-## 🧩 Database Design
+## Database Design
 
 The SQLite database contains multiple relational tables, including:
 
@@ -72,16 +72,16 @@ SQL queries are used extensively for:
 
 ## 🚀 Key Features
 
-### 🔐 Authentication System
+### Authentication System
 - Login & signup using stored customer credentials
 - Username uniqueness validation
 
-### 🍕 Order System
+### Order System
 - Select pizza flavor, size, side dishes, and drinks
 - Real-time price calculation
 - Order summary before confirmation
 
-### 💳 Membership Tier Logic
+### Membership Tier Logic
 | Tier   | Requirement (Total Spending) | Benefit |
 |------|------------------------------|---------|
 | Bronze | Default                     | No discount |
@@ -90,7 +90,7 @@ SQL queries are used extensively for:
 
 Membership tier updates automatically after each order.
 
-### ⭐ Reviews & Ratings
+### Reviews & Ratings
 - Displays top-rated customer reviews
 - Uses SQL joins between `customers` and `comments`
 
