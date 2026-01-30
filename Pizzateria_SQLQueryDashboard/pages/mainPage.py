@@ -194,15 +194,17 @@ with tab2:
         cursor.execute("""
             UPDATE customers
             SET Tier = CASE
+            WHEN TotalSpending >=2000 THEN "Gold"
             WHEN TotalSpending >=1000 THEN "Silver"
-            WHEN TotalSpending >=2000 THEN "Gold"       
+            ELSE "Bronze"
+            END;      
         """)
         conn.commit()
 with tab3:
     df_tierM = pd.read_sql_query(f"SELECT Tier FROM customers WHERE UserName == '{st.session_state.username}';", conn)
     userTierM=df_tierM["Tier"][0]
 
-    df_tierPromotionM = pd.read_sql_query(f"SELECT DiscountPercentage, Promotion FROM tierPromotion WHERE Tier == '{userTier}';", conn)
+    df_tierPromotionM = pd.read_sql_query(f"SELECT DiscountPercentage, Promotion FROM tierPromotion WHERE Tier == '{userTierM}';", conn)
     DiscountPercentageM=df_tierPromotionM["DiscountPercentage"][0]
     PromotionMembership=df_tierPromotionM["Promotion"][0]
     df_TotalSpendingM = pd.read_sql_query(f"SELECT TotalSpending FROM customers WHERE UserName == '{st.session_state.username}';", conn)
@@ -221,9 +223,9 @@ with tab3:
     with bottomLeft:
         with st.container(border=True):
             st.markdown(f"""
-                Your Membership Tier: **{userTier}** \n
+                Your Membership Tier: **{userTierM}** \n
                 Total Spending: **{TotalSpendingM}** baht \n
-                Promotion: **{Promotion}** \n
+                Promotion: **{PromotionMembership}** \n
                 """, unsafe_allow_html=True)
     with bottomRight:
         st.image(img_to_data_uri("images/TierInfo.png"))
